@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airport Transfer Service | Flughafentransfer Wien</title>
+  <meta name="description" content="Privater Flughafentransfer zwischen Flughafen Wien und Hotel. Fixpreise, Flugüberwachung, Terminal-Abholung und 24/7 Service.">
+  <meta name="theme-color" content="#071a33">
+  <link rel="preconnect" href="https://images.pexels.com">
+  <style>
+    :root {
+      --navy-950: #071a33;
+      --navy-900: #0a2344;
+      --navy-800: #10315e;
+      --blue-700: #1d5d9f;
+      --gold-500: #d7a83f;
+      --gold-400: #f0c766;
+      --green-600: #18866d;
+      --ink: #142033;
+      --muted: #66758a;
+      --line: #dbe3ee;
+      --soft: #f5f8fc;
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(7, 26, 51, 0.16);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: light;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aptos", "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(219, 227, 238, 0.88);
+    }
+
+    .nav {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--navy-950);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: var(--navy-950);
+      color: var(--gold-400);
+      box-shadow: inset 0 -10px 18px rgba(240, 199, 102, 0.12);
+    }
+
+    .brand svg { width: 23px; height: 23px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.94rem;
+      color: #324158;
+    }
+
+    .nav-links a:hover { color: var(--blue-700); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .phone-link {
+      font-weight: 800;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--gold-500);
+      color: #161006;
+      box-shadow: 0 12px 24px rgba(215, 168, 63, 0.32);
+    }
+
+    .btn-primary:hover { background: var(--gold-400); }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--navy-950);
+      border-color: var(--line);
+    }
+
+    .btn-full { width: 100%; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-950);
+      color: var(--white);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7, 26, 51, 0.98) 0%, rgba(7, 26, 51, 0.86) 46%, rgba(7, 26, 51, 0.34) 100%),
+        url("https://images.pexels.com/photos/5072362/pexels-photo-5072362.jpeg?auto=compress&cs=tinysrgb&w=1800") center right / cover no-repeat;
+    }
+
+    .hero-inner {
+      position: relative;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      padding: 86px 0 46px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 410px;
+      gap: 38px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-400);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--gold-400);
+    }
+
+    h1, h2, h3 { line-height: 1.08; margin: 0; color: inherit; }
+
+    h1 {
+      max-width: 760px;
+      margin-top: 18px;
+      font-size: clamp(2.45rem, 6vw, 5.35rem);
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .trust-item {
+      min-height: 78px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+    }
+
+    .icon-badge {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: rgba(240, 199, 102, 0.16);
+      color: var(--gold-400);
+    }
+
+    .icon-badge svg { width: 19px; height: 19px; }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card strong { display: block; font-size: 1.05rem; }
+
+    .route-pill {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .route-pill span {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .section.alt { background: var(--soft); }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--blue-700);
+      font-size: 0.78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      color: var(--navy-950);
+    }
+
+    .section-copy {
+      max-width: 500px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .booking-shell {
+      display: grid;
+      grid-template-columns: 1fr 0.42fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .booking-card, .info-panel, .price-card, .vehicle-card, .audience-card, .faq-card, .contact-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 38px rgba(16, 49, 94, 0.08);
+    }
+
+    .booking-card { padding: 26px; }
+
+    .trip-toggle {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .trip-toggle input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .trip-toggle label {
+      min-height: 48px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: #3e4d63;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 8px 10px;
+    }
+
+    .trip-toggle input:checked + label {
+      color: var(--navy-950);
+      border-color: var(--gold-500);
+      background: #fff7e3;
+      box-shadow: 0 0 0 3px rgba(215, 168, 63, 0.16);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #314158;
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #cfd9e7;
+      border-radius: 6px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .field textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--blue-700);
+      box-shadow: 0 0 0 4px rgba(29, 93, 159, 0.12);
+    }
+
+    .field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] {
+      border-color: #b42318;
+    }
+
+    .form-footer {
+      margin-top: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .success-message {
+      display: none;
+      padding: 14px 16px;
+      border: 1px solid rgba(24, 134, 109, 0.28);
+      border-radius: 6px;
+      color: #075c4a;
+      background: #eaf8f4;
+      font-weight: 750;
+    }
+
+    .success-message.visible { display: block; }
+
+    .info-panel {
+      padding: 24px;
+      background: linear-gradient(180deg, var(--navy-950), var(--navy-800));
+      color: var(--white);
+      position: sticky;
+      top: 96px;
+    }
+
+    .info-panel h3 { font-size: 1.55rem; }
+
+    .info-panel p { color: rgba(255,255,255,0.74); }
+
+    .quick-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 20px 0 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(240, 199, 102, 0.18);
+      color: var(--gold-400);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .benefit {
+      min-height: 142px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .benefit h3 {
+      margin-top: 16px;
+      font-size: 1.1rem;
+      color: var(--navy-950);
+    }
+
+    .benefit p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .price-card { padding: 20px; }
+
+    .price-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      min-height: 44px;
+    }
+
+    .price-card strong {
+      display: block;
+      margin-top: 18px;
+      font-size: 1.8rem;
+      color: var(--navy-950);
+    }
+
+    .price-note {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: #fff7e3;
+      color: #5f4311;
+      border: 1px solid rgba(215, 168, 63, 0.32);
+    }
+
+    .steps {
+      counter-reset: steps;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+      padding: 28px;
+      border-left: 3px solid var(--gold-500);
+      background: var(--white);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: 0 14px 38px rgba(16, 49, 94, 0.08);
+    }
+
+    .step::before {
+      counter-increment: steps;
+      content: "0" counter(steps);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 22px;
+      border-radius: 6px;
+      background: var(--navy-950);
+      color: var(--gold-400);
+      font-weight: 900;
+    }
+
+    .step h3, .vehicle-card h3, .audience-card h3 { color: var(--navy-950); font-size: 1.26rem; }
+
+    .step p, .vehicle-card p, .audience-card p { color: var(--muted); margin: 10px 0 0; }
+
+    .vehicle-grid, .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .vehicle-card { padding: 24px; }
+
+    .vehicle-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .vehicle-meta {
+      color: var(--gold-500);
+      font-weight: 850;
+      font-size: 0.92rem;
+    }
+
+    .vehicle-card ul {
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #3d4d63;
+    }
+
+    .vehicle-card li::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: var(--green-600);
+      vertical-align: middle;
+    }
+
+    .audience-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .audience-card { padding: 22px; }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.38fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-card { overflow: hidden; }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      font-weight: 850;
+      color: var(--navy-950);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    details summary::after {
+      content: "+";
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--blue-700);
+      flex: 0 0 auto;
+    }
+
+    details[open] summary::after { content: "-"; }
+
+    details p {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: var(--muted);
+    }
+
+    .contact {
+      background: var(--navy-950);
+      color: var(--white);
+      padding-bottom: 94px;
+    }
+
+    .contact h2 { color: var(--white); }
+
+    .contact .section-copy { color: rgba(255,255,255,0.72); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .contact-card {
+      padding: 22px;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+      color: var(--white);
+    }
+
+    .contact-card span {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-card strong, .contact-card a {
+      font-size: 1.04rem;
+      font-weight: 850;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 34px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.66);
+      font-size: 0.94rem;
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .mobile-sticky {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 80;
+      display: none;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid rgba(219, 227, 238, 0.9);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.94);
+      box-shadow: 0 18px 44px rgba(7, 26, 51, 0.24);
+      backdrop-filter: blur(16px);
+    }
+
+    .mobile-sticky .btn { flex: 1; min-height: 48px; }
+
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 70px; }
+      .hero-card { max-width: 560px; }
+      .booking-shell, .faq-layout { grid-template-columns: 1fr; }
+      .info-panel { position: static; }
+      .prices-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .audience-grid, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .nav { min-height: 64px; width: min(100% - 24px, var(--max)); }
+      .header-actions .phone-link, .header-actions .btn { display: none; }
+      .brand-mark { width: 38px; height: 38px; }
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(7, 26, 51, 0.96) 0%, rgba(7, 26, 51, 0.88) 48%, rgba(7, 26, 51, 0.66) 100%),
+          url("https://images.pexels.com/photos/5072362/pexels-photo-5072362.jpeg?auto=compress&cs=tinysrgb&w=1100") center / cover no-repeat;
+      }
+      .hero-inner { width: min(100% - 24px, var(--max)); padding: 54px 0 34px; }
+      .hero-actions .btn { width: 100%; }
+      .trust-row { grid-template-columns: repeat(2, 1fr); margin-top: 28px; }
+      .trust-item { min-height: 70px; padding: 12px; font-size: 0.92rem; }
+      .section { padding: 58px 0; }
+      .container { width: min(100% - 24px, var(--max)); }
+      .section-head { display: block; margin-bottom: 26px; }
+      .section-copy { margin-top: 14px; }
+      .booking-card { padding: 18px; }
+      .trip-toggle { grid-template-columns: 1fr; }
+      .form-grid, .benefit-grid, .steps, .vehicle-grid, .prices-grid, .audience-grid, .contact-grid { grid-template-columns: 1fr; }
+      .price-card span { min-height: 0; }
+      .footer-links { padding-bottom: 18px; }
+      .mobile-sticky { display: flex; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 2.25rem; }
+      .trust-row { grid-template-columns: 1fr; }
+      .legal-links { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Hauptnavigation">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Airport Transfer Service Startseite">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4"/><path d="M5 17h14l-1.5-6.5A3 3 0 0 0 14.6 8H9.4a3 3 0 0 0-2.9 2.5L5 17Z"/><path d="M7 17v2"/><path d="M17 17v2"/><path d="M8 13h8"/><path d="M3 11h2"/><path d="M19 11h2"/></svg>
+        </span>
+        <span>Airport Transfer Service</span>
+      </a>
+      <div class="nav-links" aria-label="Seitenbereiche">
+        <a href="#buchung">Buchung</a>
+        <a href="#vorteile">Vorteile</a>
+        <a href="#preise">Preise</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="header-actions">
+        <a class="phone-link" href="tel:+43123456789">+43 123 456789</a>
+        <a class="btn btn-primary" href="#buchung">Transfer buchen</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Privater Flughafentransfer in Wien</div>
+          <h1 id="hero-title">Flughafentransfer vom Flughafen direkt zu Ihrem Hotel</h1>
+          <p class="hero-subtitle">Buchen Sie Ihren privaten Transfer vom Flughafen zum Hotel oder vom Hotel zum Flughafen. Wir holen Sie pünktlich ab, verfolgen Ihre Flugzeiten und bringen Sie komfortabel an Ihr Ziel.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#buchung">Transfer buchen</a>
+            <a class="btn btn-secondary" href="#preise">Preis anfragen</a>
+          </div>
+          <div class="trust-row" aria-label="Vertrauenspunkte">
+            <div class="trust-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>Fixpreise möglich</div>
+            <div class="trust-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Flugüberwachung</div>
+            <div class="trust-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M6 21V7l6-4 6 4v14"/><path d="M9 21v-6h6v6"/></svg></span>Abholung am Terminal</div>
+            <div class="trust-item"><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span>24/7 Service</div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Schnelle Transferübersicht">
+          <strong>Flughafen Wien direkt zu Ihrem Hotel</strong>
+          <p>Klare Abholinformationen, saubere Fahrzeuge und Fahrer, die auch bei Flugverspätungen vorbereitet sind.</p>
+          <div class="route-pill">
+            <span><b>Airport</b><em>Terminal-Treffpunkt</em></span>
+            <span><b>Hotel</b><em>Direkt bis zur Adresse</em></span>
+            <span><b>Rückfahrt</b><em>Pünktlich zur Abflugzeit</em></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="buchung" aria-labelledby="booking-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Transfer anfragen</div>
+            <h2 id="booking-title">Buchungsanfrage in unter zwei Minuten</h2>
+          </div>
+          <p class="section-copy">Alle wichtigen Angaben für Flughafen, Hotel, Gepäck und Fahrzeugtyp in einem Formular. Die Anfrage ist unverbindlich, bis Sie unsere Bestätigung erhalten.</p>
+        </div>
+
+        <div class="booking-shell">
+          <form class="booking-card" id="transferForm" novalidate>
+            <fieldset class="trip-toggle">
+              <legend class="sr-only">Transferart auswählen</legend>
+              <input type="radio" name="transferType" id="airportToHotel" value="Flughafen zu Hotel" checked>
+              <label for="airportToHotel">Flughafen → Hotel</label>
+              <input type="radio" name="transferType" id="hotelToAirport" value="Hotel zu Flughafen">
+              <label for="hotelToAirport">Hotel → Flughafen</label>
+              <input type="radio" name="transferType" id="roundTrip" value="Hin- und Rückfahrt">
+              <label for="roundTrip">Hin- und Rückfahrt</label>
+            </fieldset>
+
+            <div class="form-grid">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="phone">Telefonnummer / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+              <div class="field"><label for="email">E-Mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="airport">Flughafen</label><input id="airport" name="airport" value="Flughafen Wien" required></div>
+              <div class="field"><label for="hotel">Hotelname</label><input id="hotel" name="hotel" autocomplete="organization" required></div>
+              <div class="field"><label for="address">Hoteladresse</label><input id="address" name="address" autocomplete="street-address" required></div>
+              <div class="field"><label for="date">Datum</label><input id="date" name="date" type="date" required></div>
+              <div class="field"><label for="time">Uhrzeit</label><input id="time" name="time" type="time" required></div>
+              <div class="field"><label for="flight">Flugnummer</label><input id="flight" name="flight" placeholder="z. B. OS 452" required></div>
+              <div class="field"><label for="people">Anzahl Personen</label><input id="people" name="people" type="number" min="1" max="8" value="2" required></div>
+              <div class="field"><label for="bags">Anzahl Koffer</label><input id="bags" name="bags" type="number" min="0" max="12" value="2" required></div>
+              <div class="field"><label for="vehicle">Fahrzeugtyp</label><select id="vehicle" name="vehicle" required><option value="">Bitte wählen</option><option>Standard</option><option>Business</option><option>Van / Großraumfahrzeug</option></select></div>
+              <div class="field"><label for="childSeat">Kindersitz benötigt?</label><select id="childSeat" name="childSeat" required><option value="">Bitte wählen</option><option>Nein</option><option>Ja</option></select></div>
+              <div class="field full"><label for="message">Nachricht / Sonderwünsche</label><textarea id="message" name="message" placeholder="z. B. viel Gepäck, Kinderwagen, Treffpunktwunsch oder Zahlungswunsch"></textarea></div>
+            </div>
+
+            <div class="form-footer">
+              <button class="btn btn-primary btn-full" type="submit">Transfer anfragen</button>
+              <p class="form-note">Nach Absenden Ihrer Anfrage erhalten Sie eine Bestätigung mit Preis und Abholinformationen. Die Anfrage ist unverbindlich, bis sie bestätigt wurde.</p>
+              <div class="success-message" id="successMessage" role="status">Vielen Dank! Ihre Transferanfrage wurde vorbereitet. Wir melden uns zur Bestätigung.</div>
+            </div>
+          </form>
+
+          <aside class="info-panel" aria-label="Buchungsvorteile">
+            <h3>Direkttransfer ohne unnötige Wartezeit</h3>
+            <p>Ideal für Urlauber, Geschäftsreisende, Familien und kleine Gruppen mit Gepäck.</p>
+            <ul class="quick-list">
+              <li><span class="check">✓</span><span>Flugnummer wird für die Abholung berücksichtigt.</span></li>
+              <li><span class="check">✓</span><span>Treffpunkt und Fahrerinfo kommen mit der Bestätigung.</span></li>
+              <li><span class="check">✓</span><span>Standard, Business und Van je nach Gruppengröße.</span></li>
+              <li><span class="check">✓</span><span>Zahlung bar oder mit Karte nach Absprache.</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="vorteile" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Warum wir</div>
+            <h2 id="benefits-title">Vorteile für Ihren Flughafentransfer</h2>
+          </div>
+          <p class="section-copy">Die wichtigsten Dinge sind einfach: pünktlich abgeholt werden, den Preis vorher kennen und mit Gepäck bequem ankommen.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Pünktliche Abholung</h3><p>Fahrer und Fahrzeug werden passend zu Ihrer Ankunfts- oder Abflugzeit geplant.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16l20-8-8 14-3-7-9 1Z"/></svg></span><h3>Flugverfolgung</h3><p>Bei Verspätungen prüfen wir Ihre Flugnummer und passen die Abholung an.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8v14H8z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></span><h3>Hilfe mit Gepäck</h3><p>Der Fahrer unterstützt beim Gepäck und bringt Sie direkt bis zur Zieladresse.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Fixpreise</h3><p>Transparente Preise ohne Überraschungen. Der Preis wird vor der Bestätigung genannt.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17h16l-2-7H6l-2 7Z"/><path d="M7 17v2M17 17v2"/></svg></span><h3>Flexible Fahrzeuge</h3><p>Passende Optionen für Einzelpersonen, Familien, Geschäftsreisende und Gruppen.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 10h14"/><path d="M6 21h12"/></svg></span><h3>Kindersitze auf Anfrage</h3><p>Geben Sie den Wunsch einfach im Formular an, damit wir entsprechend planen.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span><h3>Bar oder Karte</h3><p>Kartenzahlung ist möglich. Zahlungswünsche können direkt mitgeteilt werden.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></span><h3>24/7 verfügbar</h3><p>Transfers frühmorgens, spätabends und nachts sind nach Bestätigung möglich.</p></article>
+          <article class="benefit"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5l8-3 8 3v16"/><path d="M9 21v-7h6v7"/></svg></span><h3>Hotel-Abholung</h3><p>Für die Rückfahrt holen wir Sie pünktlich direkt an Ihrem Hotel ab.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preise" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Preise und Fixpreise</div>
+            <h2 id="prices-title">Transparente Fixpreise. Keine versteckten Kosten.</h2>
+          </div>
+          <p class="section-copy">Der endgültige Preis hängt von Zieladresse, Personenanzahl, Gepäck und Fahrzeugtyp ab. Sie erhalten den Preis immer vor der Buchungsbestätigung.</p>
+        </div>
+        <div class="prices-grid">
+          <article class="price-card"><span>Flughafen → Innenstadt-Hotel</span><strong>ab € 49</strong></article>
+          <article class="price-card"><span>Innenstadt-Hotel → Flughafen</span><strong>ab € 49</strong></article>
+          <article class="price-card"><span>Flughafen → Hotelzone A</span><strong>ab € 59</strong></article>
+          <article class="price-card"><span>Flughafen → Hotelzone B</span><strong>ab € 69</strong></article>
+          <article class="price-card"><span>Van / Großraumfahrzeug</span><strong>ab € 79</strong></article>
+        </div>
+        <div class="price-note"><strong>Hinweis:</strong> Sie erhalten vor der Buchungsbestätigung immer einen verbindlichen Preisvorschlag mit Treffpunkt und Abholinformationen.</div>
+      </div>
+    </section>
+
+    <section class="section alt" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">So funktioniert's</div>
+            <h2 id="steps-title">In drei Schritten zum Transfer</h2>
+          </div>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Transfer anfragen</h3><p>Geben Sie Flughafen, Hotel, Datum, Uhrzeit und Flugnummer ein.</p></article>
+          <article class="step"><h3>Bestätigung erhalten</h3><p>Wir bestätigen Ihre Fahrt mit Preis, Treffpunkt und Abholzeit.</p></article>
+          <article class="step"><h3>Entspannt ankommen</h3><p>Ihr Fahrer wartet am vereinbarten Treffpunkt oder holt Sie pünktlich im Hotel ab.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="vehicles-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Fahrzeugoptionen</div>
+            <h2 id="vehicles-title">Das passende Fahrzeug für Ihre Fahrt</h2>
+          </div>
+        </div>
+        <div class="vehicle-grid">
+          <article class="vehicle-card"><div class="vehicle-top"><h3>Standard</h3><span class="vehicle-meta">1-3 Personen</span></div><p>Ideal für kompakte Flughafentransfers mit normalem Gepäck.</p><ul><li>Privater Transfer</li><li>Platz für normales Gepäck</li><li>Komfortable Direktfahrt</li></ul></article>
+          <article class="vehicle-card"><div class="vehicle-top"><h3>Business</h3><span class="vehicle-meta">Komfort</span></div><p>Ein hochwertiger Transfer für Geschäftsreisende und besondere Anlässe.</p><ul><li>Gehobenes Fahrzeug</li><li>Ruhige Fahrt zum Termin</li><li>Diskreter Service</li></ul></article>
+          <article class="vehicle-card"><div class="vehicle-top"><h3>Van / Großraumfahrzeug</h3><span class="vehicle-meta">Gruppen</span></div><p>Mehr Platz für Familien, Gruppen, Kinderwagen oder Sportgepäck.</p><ul><li>Mehr Sitzplätze</li><li>Zusätzlicher Kofferraum</li><li>Kindersitz auf Anfrage</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" aria-labelledby="audience-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Für wen</div>
+            <h2 id="audience-title">Transfers für jede Reiseart</h2>
+          </div>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card"><h3>Urlauber</h3><p>Stressfrei vom Flughafen ins Hotel.</p></article>
+          <article class="audience-card"><h3>Geschäftsreisende</h3><p>Pünktlicher Transfer ohne Wartezeit.</p></article>
+          <article class="audience-card"><h3>Familien</h3><p>Platz für Gepäck, Kinderwagen und Kindersitze auf Anfrage.</p></article>
+          <article class="audience-card"><h3>Gruppen</h3><p>Großraumfahrzeuge für mehrere Personen.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div>
+          <div class="section-kicker">FAQ</div>
+          <h2 id="faq-title">Häufige Fragen</h2>
+          <p class="section-copy">Die wichtigsten Antworten zur Abholung, Flugverspätung, Rückfahrt und Zahlung.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-card" open><summary>Was passiert, wenn mein Flug Verspätung hat?</summary><p>Wir verfolgen Ihre Flugnummer und passen die Abholzeit entsprechend an.</p></details>
+          <details class="faq-card"><summary>Wo treffe ich den Fahrer am Flughafen?</summary><p>Der genaue Treffpunkt wird Ihnen mit der Buchungsbestätigung mitgeteilt. Auf Wunsch wartet der Fahrer mit Namensschild.</p></details>
+          <details class="faq-card"><summary>Kann ich auch vom Hotel zum Flughafen buchen?</summary><p>Ja, Sie können sowohl Flughafen-zu-Hotel als auch Hotel-zu-Flughafen buchen.</p></details>
+          <details class="faq-card"><summary>Gibt es Fixpreise?</summary><p>Ja, für viele Strecken bieten wir Fixpreise an. Der Preis wird vor der Bestätigung mitgeteilt.</p></details>
+          <details class="faq-card"><summary>Kann ich eine Rückfahrt direkt mitbuchen?</summary><p>Ja, Hin- und Rückfahrt können direkt gemeinsam angefragt werden.</p></details>
+          <details class="faq-card"><summary>Kann ich mit Karte bezahlen?</summary><p>Ja, Kartenzahlung ist möglich. Bitte geben Sie Zahlungswünsche bei der Anfrage an.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section contact" id="kontakt" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Kontakt</div>
+          <h2 id="contact-title">Jetzt Flughafentransfer in Wien anfragen</h2>
+        </div>
+        <p class="section-copy">Transfers rund um Wien und Flughafen Wien. Für Hotelgäste, Familien, Geschäftsreisende und kleine Gruppen.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card"><span>Telefon</span><a href="tel:+43123456789">+43 123 456789</a></div>
+        <div class="contact-card"><span>WhatsApp</span><a href="https://wa.me/43123456789">Nachricht senden</a></div>
+        <div class="contact-card"><span>E-Mail</span><a href="mailto:info@airport-transfer.at">info@airport-transfer.at</a></div>
+        <div class="contact-card"><span>Einsatzgebiet</span><strong>Wien und Flughafen Wien</strong></div>
+      </div>
+      <div class="footer-links">
+        <span>© <span id="year"></span> Airport Transfer Service</span>
+        <div class="legal-links"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky" aria-label="Schnellaktion mobil">
+    <a class="btn btn-primary" href="#buchung">Jetzt buchen</a>
+    <a class="btn btn-light" href="tel:+43123456789">Anrufen</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('transferForm');
+    const successMessage = document.getElementById('successMessage');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    function markValidity(field) {
+      const valid = field.checkValidity();
+      field.setAttribute('aria-invalid', String(!valid));
+      return valid;
+    }
+
+    form.addEventListener('input', (event) => {
+      const field = event.target;
+      if (field.matches('input, select, textarea')) markValidity(field);
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      successMessage.classList.remove('visible');
+      const fields = Array.from(form.querySelectorAll('input[required], select[required], textarea[required]'));
+      const valid = fields.map(markValidity).every(Boolean);
+      if (!valid) {
+        const firstInvalid = fields.find((field) => !field.checkValidity());
+        firstInvalid.focus();
+        return;
+      }
+      successMessage.classList.add('visible');
+      form.reset();
+      document.getElementById('airportToHotel').checked = true;
+      document.getElementById('airport').value = 'Flughafen Wien';
+      document.getElementById('people').value = '2';
+      document.getElementById('bags').value = '2';
+      fields.forEach((field) => field.setAttribute('aria-invalid', 'false'));
+    });
+  </script>
+</body>
+</html>
